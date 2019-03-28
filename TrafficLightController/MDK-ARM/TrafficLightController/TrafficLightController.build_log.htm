@@ -1,0 +1,178 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ?Vision V5.26.2.0
+Copyright (C) 2018 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: JINJUTA PUENGKAYAI, THAMMASAT UNIVERSITY, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.26.2.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 6 (build 750)
+Assembler:       Armasm.exe V5.06 update 6 (build 750)
+Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
+Library Manager: ArmAr.exe V5.06 update 6 (build 750)
+Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
+CPU DLL:         SARMCM3.DLL V5.26.2.0
+Dialog DLL:      DCM.DLL V1.17.2.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.5.0
+Dialog DLL:      TCM.DLL V1.36.1.0
+ 
+<h2>Project:</h2>
+C:\Users\Vostro\Desktop\LE484_Projects\le484-projects\TrafficLightController\MDK-ARM\TrafficLightController.uvprojx
+Project File Date:  03/27/2019
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Build target 'TrafficLightController'
+assembling startup_stm32f407xx.s...
+compiling main.c...
+../Src/main.c(67): error:  #20: identifier "Event_t" is undefined
+  Event_t Event_Detect()
+../Src/main.c(69): error:  #20: identifier "Event_t" is undefined
+  	Event_t evt = NO_EVT ;
+../Src/main.c(69): error:  #20: identifier "NO_EVT" is undefined
+  	Event_t evt = NO_EVT ;
+../Src/main.c(71): error:  #20: identifier "TIMEOUT" is undefined
+  									evt = TIMEOUT ;
+../Src/main.c(76): error:  #20: identifier "BUTTON" is undefined
+  									evt = BUTTON ;
+../Src/main.c(80): warning:  #223-D: function "MODE_READ" declared implicitly
+  							if (MODE_READ()) {
+../Src/main.c(81): error:  #20: identifier "MODE_CHANGE" is undefined
+  									evt = MODE_CHANGE ;
+../Src/main.c(127): error:  #20: identifier "Event_t" is undefined
+  		Event_t evt = Event_Detect(); //detect event
+../Src/main.c(128): error:  #140: too many arguments in function call
+  		uint32_t timeout_value = Ctrler_Exec(evt) ; //Execute state machine, return timeout
+../Src/main.c(130): error:  #20: identifier "MIN_GREEN_TIME" is undefined
+  		MIN_GREEN_TIME = GREEN_TIME_READ() ? 600:1200 ; 
+../Src/main.c(130): warning:  #223-D: function "GREEN_TIME_READ" declared implicitly
+  		MIN_GREEN_TIME = GREEN_TIME_READ() ? 600:1200 ; 
+../Src/main.c(131): error:  #20: identifier "WALK_INTERVAL" is undefined
+  		WALK_INTERVAL = WALK_READ() ? 100:200 ;
+../Src/main.c(131): warning:  #223-D: function "WALK_READ" declared implicitly
+  		WALK_INTERVAL = WALK_READ() ? 100:200 ;
+../Src/main.c(192): error:  #20: identifier "YELLOW_LAMP_Pin" is undefined
+  	HAL_GPIO_WritePin(GPIOC, YELLOW_LAMP_Pin|GREEN_LAMP_Pin, GPIO_PIN_RESET) ;
+../Src/main.c(192): error:  #20: identifier "GREEN_LAMP_Pin" is undefined
+  	HAL_GPIO_WritePin(GPIOC, YELLOW_LAMP_Pin|GREEN_LAMP_Pin, GPIO_PIN_RESET) ;
+../Src/main.c(195): error:  #20: identifier "RED_LAMP_GPIO_Port" is undefined
+  	HAL_GPIO_WritePin(RED_LAMP_GPIO_Port, RED_LAMP_Pin, GPIO_PIN_RESET) ;
+../Src/main.c(195): error:  #20: identifier "RED_LAMP_Pin" is undefined
+  	HAL_GPIO_WritePin(RED_LAMP_GPIO_Port, RED_LAMP_Pin, GPIO_PIN_RESET) ;
+../Src/main.c(198): error:  #20: identifier "WALK_Pin" is undefined
+  	HAL_GPIO_WritePin(GPIOD, WALK_Pin|DONT_WALK_Pin, GPIO_PIN_RESET) ;
+../Src/main.c(198): error:  #20: identifier "DONT_WALK_Pin" is undefined
+  	HAL_GPIO_WritePin(GPIOD, WALK_Pin|DONT_WALK_Pin, GPIO_PIN_RESET) ;
+../Src/main.c(201): error:  #20: identifier "MIN_GREEN_SW_Pin" is undefined
+  	GPIO_InitStruct.Pin = MIN_GREEN_SW_Pin|WALK_INTERVAL_SW_Pin|MODE_SW_Pin ;
+../Src/main.c(201): error:  #20: identifier "WALK_INTERVAL_SW_Pin" is undefined
+  	GPIO_InitStruct.Pin = MIN_GREEN_SW_Pin|WALK_INTERVAL_SW_Pin|MODE_SW_Pin ;
+../Src/main.c(201): error:  #20: identifier "MODE_SW_Pin" is undefined
+  	GPIO_InitStruct.Pin = MIN_GREEN_SW_Pin|WALK_INTERVAL_SW_Pin|MODE_SW_Pin ;
+../Src/main.c(214): error:  #20: identifier "BUTTON1_Pin" is undefined
+  	GPIO_InitStruct.Pin = BUTTON1_Pin ;
+../Src/main.c(217): error:  #20: identifier "BUTTON1_GPIO_Port" is undefined
+  	HAL_GPIO_Init(BUTTON1_GPIO_Port, &GPIO_InitStruct) ;
+../Src/main.c: 3 warnings, 21 errors
+compiling stm32f4xx_it.c...
+compiling stm32f4xx_hal_msp.c...
+compiling bsp.c...
+compiling ctrler.c...
+..\Src\ctrler.c(7): error:  #20: identifier "Ctrler_State_t" is undefined
+  Ctrler_State_t Ctrler_State = RESTART ;
+..\Src\ctrler.c(7): error:  #20: identifier "RESTART" is undefined
+  Ctrler_State_t Ctrler_State = RESTART ;
+..\Src\ctrler.c(13): error:  #20: identifier "Event_t" is undefined
+  uint32_t Ctrler_Exec(Event_t evt)
+..\Src\ctrler.c(13): error:  #147-D: declaration is incompatible with "uint32_t Ctrler_Exec(void)"  (declared at line 14 of "../Inc/ctrler.h")
+  uint32_t Ctrler_Exec(Event_t evt)
+..\Src\ctrler.c(18): error:  #20: identifier "OUT_OF_SERVICE" is undefined
+  		case OUT_OF_SERVICE :
+..\Src\ctrler.c(22): error:  #20: identifier "THROUGH" is undefined
+  			Ctrler_State = THROUGH ;
+..\Src\ctrler.c(27): error:  #20: identifier "MODE_CHANGE" is undefined
+  			if(evt == MODE_CHANGE) {
+..\Src\ctrler.c(31): error:  #20: identifier "BUTTON" is undefined
+  			if(evt == BUTTON && greenTime > MIN_GREEN_TIME) {
+..\Src\ctrler.c(31): error:  #20: identifier "greenTime" is undefined
+  			if(evt == BUTTON && greenTime > MIN_GREEN_TIME) {
+..\Src\ctrler.c(31): error:  #20: identifier "MIN_GREEN_TIME" is undefined
+  			if(evt == BUTTON && greenTime > MIN_GREEN_TIME) {
+..\Src\ctrler.c(32): error:  #20: identifier "BLOCKED" is undefined
+  				Ctrler_State = BLOCKED ;
+..\Src\ctrler.c(33): error:  #20: identifier "WALK_INTERVAL" is undefined
+  				timeout_value = WALK_INTERVAL ;
+..\Src\ctrler.c(37): error:  #20: identifier "WAIT" is undefined
+  				Ctrler_State = WAIT ;
+..\Src\ctrler.c(41): error:  #20: identifier "BLOCKED" is undefined
+  		case BLOCKED :
+..\Src\ctrler.c(42): error:  #20: identifier "MODE_CHANGE" is undefined
+  				if(evt == MODE_CHANGE) {
+..\Src\ctrler.c(46): error:  #20: identifier "Timeout_Value" is undefined
+  				printf("\tWALK : %2d s\n" , ((Timeout_Value-Tick))/10) ;
+..\Src\ctrler.c(46): error:  #20: identifier "Tick" is undefined
+  				printf("\tWALK : %2d s\n" , ((Timeout_Value-Tick))/10) ;
+..\Src\ctrler.c(47): error:  #20: identifier "TIMEOUT" is undefined
+  				if (evt == TIMEOUT) {
+..\Src\ctrler.c(52): error:  #20: identifier "WAIT" is undefined
+  		case WAIT :
+..\Src\ctrler.c(53): error:  #20: identifier "MIN_GREEN_TIME" is undefined
+  			printf("\tDONT_WALK : %2d s\n" , (MIN_GREEN_TIME - greenTime)/10) ;
+..\Src\ctrler.c(53): error:  #20: identifier "greenTime" is undefined
+  			printf("\tDONT_WALK : %2d s\n" , (MIN_GREEN_TIME - greenTime)/10) ;
+..\Src\ctrler.c(54): error:  #20: identifier "MODE_CHANGE" is undefined
+  				if(evt == MODE_CHANGE) {
+..\Src\ctrler.c(58): error:  #20: identifier "TIMEOUT" is undefined
+  				if(evt == TIMEOUT) {
+..\Src\ctrler.c(60): error:  #20: identifier "WALK_INTERVAL" is undefined
+  					timeout_value = WALK_INTERVAL ;
+..\Src\ctrler.c: 0 warnings, 24 errors
+compiling timer.c...
+compiling stm32f4xx_hal_tim.c...
+compiling stm32f4xx_hal_tim_ex.c...
+compiling stm32f4xx_hal_rcc.c...
+compiling stm32f4xx_hal_rcc_ex.c...
+compiling stm32f4xx_hal_flash.c...
+compiling stm32f4xx_hal_flash_ex.c...
+compiling stm32f4xx_hal_flash_ramfunc.c...
+compiling stm32f4xx_hal_gpio.c...
+compiling stm32f4xx_hal_dma_ex.c...
+compiling stm32f4xx_hal_pwr.c...
+compiling stm32f4xx_hal_dma.c...
+compiling stm32f4xx_hal_pwr_ex.c...
+compiling stm32f4xx_hal_cortex.c...
+compiling stm32f4xx_hal.c...
+compiling stm32f4xx_hal_exti.c...
+compiling system_stm32f4xx.c...
+"TrafficLightController\TrafficLightController.axf" - 45 Error(s), 3 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.4.0.pack
+                ARM.CMSIS.5.4.0
+                CMSIS (Cortex Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.1.2
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F4xx_DFP.2.13.0.pack
+                Keil.STM32F4xx_DFP.2.13.0
+                STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\_TrafficLightController
+  C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include
+  C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.1.2
+Target not created.
+Build Time Elapsed:  00:01:16
+</pre>
+</body>
+</html>
