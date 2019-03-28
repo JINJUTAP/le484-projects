@@ -27,7 +27,54 @@ Project File Date:  03/27/2019
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'TrafficLightController'
-assembling startup_stm32f407xx.s...
+compiling bsp.c...
+..\Src\bsp.c(6): error:  #20: identifier "Light_t" is undefined
+   Light_t Light = RED ;
+..\Src\bsp.c(6): error:  #20: identifier "RED" is undefined
+   Light_t Light = RED ;
+..\Src\bsp.c(21): warning:  #223-D: function "WALK_OFF" declared implicitly
+  	WALK_OFF();		Delay(10);		WALK_ON();		Delay(10);
+..\Src\bsp.c(21): warning:  #223-D: function "WALK_ON" declared implicitly
+  	WALK_OFF();		Delay(10);		WALK_ON();		Delay(10);
+..\Src\bsp.c(25): warning:  #223-D: function "DONT_WALK_ON" declared implicitly
+  			DONT_WALK_ON();
+..\Src\bsp.c(26): error:  #20: identifier "DEAD_PERIOD" is undefined
+  			Delay(DEAD_PERIOD);
+..\Src\bsp.c(27): warning:  #223-D: function "RED_OFF" declared implicitly
+  			RED_OFF();
+..\Src\bsp.c(29): warning:  #223-D: function "GREEN_ON" declared implicitly
+  			GREEN_ON();
+..\Src\bsp.c(30): error:  #20: identifier "GREEN" is undefined
+  			Light = GREEN;
+..\Src\bsp.c(38): warning:  #223-D: function "GREEN_OFF" declared implicitly
+  	GREEN_OFF();
+..\Src\bsp.c(40): warning:  #223-D: function "YELLOW_ON" declared implicitly
+  	YELLOW_ON();
+..\Src\bsp.c(42): warning:  #223-D: function "YELLOW_OFF" declared implicitly
+  	YELLOW_OFF();
+..\Src\bsp.c(44): warning:  #223-D: function "RED_ON" declared implicitly
+  	RED_ON();
+..\Src\bsp.c(45): error:  #20: identifier "DEAD_PERIOD" is undefined
+  			Delay(DEAD_PERIOD);
+..\Src\bsp.c(46): warning:  #223-D: function "DONT_WALK_OFF" declared implicitly
+  	DONT_WALK_OFF();
+..\Src\bsp.c(48): warning:  #223-D: function "WALK_ON" declared implicitly
+  	WALK_ON();
+..\Src\bsp.c(57): warning:  #223-D: function "RED_OFF" declared implicitly
+  	RED_OFF();
+..\Src\bsp.c(58): warning:  #223-D: function "GREEN_OFF" declared implicitly
+  	GREEN_OFF();
+..\Src\bsp.c(59): warning:  #223-D: function "WALK_OFF" declared implicitly
+  	WALK_OFF();
+..\Src\bsp.c(61): warning:  #223-D: function "YELLOW_OFF" declared implicitly
+  	YELLOW_OFF();
+..\Src\bsp.c(62): warning:  #223-D: function "DONT_WALK_OFF" declared implicitly
+  	DONT_WALK_OFF();
+..\Src\bsp.c(64): warning:  #223-D: function "YELLOW_ON" declared implicitly
+  	YELLOW_ON();
+..\Src\bsp.c(65): warning:  #223-D: function "DONT_WALK_ON" declared implicitly
+  	DONT_WALK_ON();
+..\Src\bsp.c: 18 warnings, 5 errors
 compiling main.c...
 ../Src/main.c(67): error:  #20: identifier "Event_t" is undefined
   Event_t Event_Detect()
@@ -78,9 +125,14 @@ compiling main.c...
 ../Src/main.c(217): error:  #20: identifier "BUTTON1_GPIO_Port" is undefined
   	HAL_GPIO_Init(BUTTON1_GPIO_Port, &GPIO_InitStruct) ;
 ../Src/main.c: 3 warnings, 21 errors
-compiling stm32f4xx_it.c...
-compiling stm32f4xx_hal_msp.c...
-compiling bsp.c...
+compiling timer.c...
+..\Src\timer.c(44): error:  #20: identifier "Light" is undefined
+  		if (Light == GREEN) {
+..\Src\timer.c(44): error:  #20: identifier "GREEN" is undefined
+  		if (Light == GREEN) {
+..\Src\timer.c(47): error:  #20: identifier "RED" is undefined
+  		else if (Light == RED) {
+..\Src\timer.c: 0 warnings, 3 errors
 compiling ctrler.c...
 ..\Src\ctrler.c(7): error:  #20: identifier "Ctrler_State_t" is undefined
   Ctrler_State_t Ctrler_State = RESTART ;
@@ -131,24 +183,7 @@ compiling ctrler.c...
 ..\Src\ctrler.c(60): error:  #20: identifier "WALK_INTERVAL" is undefined
   					timeout_value = WALK_INTERVAL ;
 ..\Src\ctrler.c: 0 warnings, 24 errors
-compiling timer.c...
-compiling stm32f4xx_hal_tim.c...
-compiling stm32f4xx_hal_tim_ex.c...
-compiling stm32f4xx_hal_rcc.c...
-compiling stm32f4xx_hal_rcc_ex.c...
-compiling stm32f4xx_hal_flash.c...
-compiling stm32f4xx_hal_flash_ex.c...
-compiling stm32f4xx_hal_flash_ramfunc.c...
-compiling stm32f4xx_hal_gpio.c...
-compiling stm32f4xx_hal_dma_ex.c...
-compiling stm32f4xx_hal_pwr.c...
-compiling stm32f4xx_hal_dma.c...
-compiling stm32f4xx_hal_pwr_ex.c...
-compiling stm32f4xx_hal_cortex.c...
-compiling stm32f4xx_hal.c...
-compiling stm32f4xx_hal_exti.c...
-compiling system_stm32f4xx.c...
-"TrafficLightController\TrafficLightController.axf" - 45 Error(s), 3 Warning(s).
+"TrafficLightController\TrafficLightController.axf" - 53 Error(s), 21 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -172,7 +207,7 @@ Package Vendor: Keil
 
    * Component: ARM::CMSIS:CORE:5.1.2
 Target not created.
-Build Time Elapsed:  00:01:16
+Build Time Elapsed:  00:00:22
 </pre>
 </body>
 </html>

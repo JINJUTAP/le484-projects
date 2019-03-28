@@ -28,3 +28,5 @@ trafficlightcontroller\timer.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ha
 trafficlightcontroller\timer.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h
 trafficlightcontroller\timer.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h
 trafficlightcontroller\timer.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
+trafficlightcontroller\timer.o: ../Inc/bsp.h
+trafficlightcontroller\timer.o: ../Inc/main.h
