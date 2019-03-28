@@ -28,7 +28,7 @@ trafficlightcontroller\ctrler.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_h
 trafficlightcontroller\ctrler.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h
 trafficlightcontroller\ctrler.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h
 trafficlightcontroller\ctrler.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
+trafficlightcontroller\ctrler.o: ../Inc/main.h
 trafficlightcontroller\ctrler.o: ../Inc/bsp.h
 trafficlightcontroller\ctrler.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-trafficlightcontroller\ctrler.o: ../Inc/main.h
 trafficlightcontroller\ctrler.o: ../Inc/timer.h

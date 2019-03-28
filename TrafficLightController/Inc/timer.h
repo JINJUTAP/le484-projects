@@ -6,13 +6,19 @@ extern "C" {
 #endif
 
 #include "stm32f4xx_hal.h"
+#include "main.h"
 
 // exported global variables
-extern int Timeout_Status;
+extern uint32_t Tick ;
+extern uint32_t Timeout_Value ;
+extern int Timeout_Status ;
+extern int greenTime ;
+extern int MIN_GREEN_TIME ;
+extern int WALK_INTERVAL ;
 
 // Function prototype
-void Timeout_Config(uint32_t value);
-void Delay(uint32_t value);
+void Timeout_Config(uint32_t timeout_value);
+void Delay(uint32_t delay_value);
 void HAL_IncTick(void);
 
 #ifdef __cplusplus
