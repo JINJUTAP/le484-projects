@@ -68,8 +68,8 @@ void Error_Handler(void);
 #define YELLOW_LAMP_GPIO_Port GPIOC
 #define GREEN_LAMP_Pin GPIO_PIN_4
 #define GREEN_LAMP_GPIO_Port GPIOC
-#define Button1_Pin GPIO_PIN_2
-#define Button1_GPIO_Port GPIOB
+#define BUTTON1_Pin GPIO_PIN_2
+#define BUTTON1_GPIO_Port GPIOB
 #define BUTTON1_EXTI_IRQn EXTI2_IRQn
 #define RED_LAMP_Pin GPIO_PIN_14
 #define RED_LAMP_GPIO_Port GPIOB
