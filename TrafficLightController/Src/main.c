@@ -61,27 +61,26 @@ static void MX_GPIO_Init(void);
 /* USER CODE BEGIN 0 */
 int fputc(int ch, FILE *f)
 {
-	return ITM_SendChar(ch);
+    return ITM_SendChar(ch);
 }
 
 Event_t Event_Detect()
 {
-	Event_t evt = NO_EVT ;
-							if (Timeout_Status){
-									evt = TIMEOUT ;
-									Timeout_Status = 0 ;
-							}
-							
-							if (Button_Status) {
-									evt = BUTTON ;
-									Button_Status = 0 ;
-							}
-
-							if (MODE_READ()) {
-									evt = MODE_CHANGE ;
-							}
-	return evt ;
-}							
+    Event_t evt = NO_EVT;
+		if(Timeout_Status){
+			evt = TIMEOUT;
+			Timeout_Status = 0;
+		}
+		
+		if (Button_Status){
+			evt = BUTTON;
+			Button_Status = 0;
+		}
+		if(MODE_READ()){ //out of service switch
+			evt = MODE_CHANGE;
+		}
+    return evt;
+}
 /* USER CODE END 0 */
 
 /**
@@ -91,7 +90,7 @@ Event_t Event_Detect()
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+    
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -124,12 +123,13 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 		
-		Event_t evt = Event_Detect(); //detect event
-		uint32_t timeout_value = Ctrler_Exec(evt) ; //Execute state machine, return timeout
-		Timeout_Config(timeout_value) ; //set timeout value in timer
-		MIN_GREEN_TIME = GREEN_TIME_READ() ? 600:1200 ; 
-		WALK_INTERVAL = WALK_READ() ? 100:200 ;
-		Delay(1);
+		
+    Event_t evt = Event_Detect();   //detect event
+    uint32_t timeout_value = Ctrler_Exec(evt); //Execute state machine, return timeout
+    Timeout_Config(timeout_value); //set timeout value in timer
+	  MIN_GREEN_TIME = GREEN_TIME_READ() ? 600:1200; //10s 60s
+		WALK_INTERVAL = WALK_READ() ? 100:200; //10s 20s
+    Delay(1);
   }
   /* USER CODE END 3 */
 }
@@ -197,38 +197,51 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOD, WALK_Pin|DONT_WALK_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : MIN_GREEN_TIME_Pin WALK_INTERVAL_Pin OUT_OF_SERVICE_Pin */
-  GPIO_InitStruct.Pin = MIN_GREEN_SW_Pin|WALK_INTERVAL_SW_Pin|MODE_SW_Pin;
+  /*Configure GPIO pins : MIN_GREEN_TIME_Pin WALK_INTERVAL_Pin MODE_SW_Pin */
+  GPIO_InitStruct.Pin = MIN_GREEN_TIME_Pin|WALK_INTERVAL_Pin|MODE_SW_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : YELLOW_lamp_Pin GREEN_lamp_Pin */
+  /*Configure GPIO pins : YELLOW_LAMP_Pin GREEN_LAMP_Pin */
   GPIO_InitStruct.Pin = YELLOW_LAMP_Pin|GREEN_LAMP_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : Pedestrian_Button1_Pin Pedestrian_button2_Pin */
+  /*Configure GPIO pin : BUTTON1_Pin */
   GPIO_InitStruct.Pin = BUTTON1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+  HAL_GPIO_Init(BUTTON1_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : RED_lamp_Pin */
+  /*Configure GPIO pin : RED_LAMP_Pin */
   GPIO_InitStruct.Pin = RED_LAMP_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(RED_LAMP_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : WALK_symbol_Pin DONT_WALK_symbol_Pin */
+  /*Configure GPIO pin : BUTTON2_Pin */
+  GPIO_InitStruct.Pin = BUTTON2_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(BUTTON2_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : WALK_Pin DONT_WALK_Pin */
   GPIO_InitStruct.Pin = WALK_Pin|DONT_WALK_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
+
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI2_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI2_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
 }
 

@@ -1,8 +1,8 @@
 --cpu=Cortex-M4.fp
 "trafficlightcontroller\startup_stm32f407xx.o"
 "trafficlightcontroller\bsp.o"
-"trafficlightcontroller\timer.o"
 "trafficlightcontroller\ctrler.o"
+"trafficlightcontroller\timer.o"
 "trafficlightcontroller\main.o"
 "trafficlightcontroller\stm32f4xx_it.o"
 "trafficlightcontroller\stm32f4xx_hal_msp.o"
